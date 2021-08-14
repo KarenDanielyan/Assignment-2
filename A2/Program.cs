@@ -5,57 +5,101 @@ namespace A2
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            if( args.Length > )
-            string expr = getExpression();
-            
+            try
+            {
+                CheckArguments(args);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
+            while(true)
+            {
+                Console.Write("> ");
+                var line = Console.ReadLine();
+
+                if (line == "1+1")
+                {
+                    Console.WriteLine("2");
+                }
+                else
+                    Console.WriteLine("ERROR: Wrong Expression.");
+            }
+
         }
 
-        static string getExpression()
-        {
-            return Console.ReadLine();
-        }
 
 
 
 
-        static List<String> arg = new List<String>({"-v", "n"});
-        static oprator[] myOperators = new oprator[7];
 
-        static float Sum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//      BASIC FUNCTIONS
+        static void CheckArguments(string[] args)
         {
-            return 0;
-        }
-        static float Multiply()
-        {
-            return 0;
-        }
-        static float Divide()
-        {
-            return 0;
-        }
-        static float Substract()
-        {
-            return 0;
-        }
-        static float Mod()
-        {
-            return 0;
-        }
-        static float Pow()
-        {
-            return 0;
-        }
-        static float Fac()
-        {
-            return 0;
+            if (args.Length > arg.Count)
+            {
+                throw tooManyArguments;
+            }
         }
 
-        struct oprator{
-             public char value;
-             public int peredence;
-        }
+//      INITIALIZATION ITEMS
+
+        static List<String> arg = new List<String>
+        {"-v", "-t" };
+
+        static Exception tooManyArguments = new Exception("Too many arguments!!!(Max: 2)");
+
 
     }
 }
