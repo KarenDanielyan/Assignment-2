@@ -19,6 +19,7 @@
         //Expressions
         ParenthesizedExpression,
         NumberExpression,
+        UnaryExpression,
         BinaryExpression
     }
 }
