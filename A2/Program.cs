@@ -42,21 +42,20 @@ namespace A2
                     break;
 
                 var syntaxTree = SyntaxTree.Parse(line);
-                var color = Console.ForegroundColor;
 
                 if (printTree)
                 {
                     //Styling
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     TreePrint(syntaxTree.Root);
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
                 if(syntaxTree.ErrorMessages.Any())
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     foreach (var message in syntaxTree.ErrorMessages)
                         Console.WriteLine(message);
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
                 else
                 {
@@ -70,7 +69,6 @@ namespace A2
         }
 
 //      BASIC FUNCTIONS
-
         static void TreePrint(SyntaxNode node, string indent = "", bool isLast = true)
         {
 
