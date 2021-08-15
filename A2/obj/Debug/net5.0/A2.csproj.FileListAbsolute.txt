@@ -13,3 +13,4 @@ C:\Users\User\Desktop\Assignent-2\A2\obj\Debug\net5.0\A2.dll
 C:\Users\User\Desktop\Assignent-2\A2\obj\Debug\net5.0\ref\A2.dll
 C:\Users\User\Desktop\Assignent-2\A2\obj\Debug\net5.0\A2.pdb
 C:\Users\User\Desktop\Assignent-2\A2\obj\Debug\net5.0\A2.genruntimeconfig.cache
+C:\Users\User\Desktop\Assignent-2\A2\obj\Debug\net5.0\A2.csproj.AssemblyReference.cache
