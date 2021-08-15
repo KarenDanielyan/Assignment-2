@@ -38,6 +38,8 @@ namespace A2
                 var line = Console.ReadLine();
                 if (String.IsNullOrWhiteSpace(line))
                     return;
+                else if (line == "#end")
+                    break;
 
                 var syntaxTree = SyntaxTree.Parse(line);
                 var color = Console.ForegroundColor;
@@ -104,10 +106,8 @@ namespace A2
         }
 
 //      INITIALIZATION ITEMS
-
         static List<String> arg = new List<String>
         {"-v", "-t" };
-
-        static Exception tooManyArguments = new Exception("Too many arguments!!!(Max: 2)");
+        static Exception tooManyArguments = new Exception($"Too many arguments!!!(Max: {arg.Count()})");
     }
 }
