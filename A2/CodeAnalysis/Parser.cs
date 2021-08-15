@@ -68,47 +68,43 @@ namespace A2.CodeAnalysis
 
         public SyntaxTree Parse()
         {
-            var expresion = ParseTerm();
+            var expresion = ParseExpression();
             var end0fFile = Match(SyntaxType.EndofLineToken);
 
             return new SyntaxTree(_errormessages, expresion, end0fFile);
         }
 
-        private ExpressionSyntax ParseExpression()
+        private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
         {
-            return ParseTerm();
+            var left = ParsePrimeExpression();
+
+            while (true)
+            {
+                var precedence = GetBinaryOperatorPrecedence(Current.Type);
+                if (precedence == 0 || precedence <= parentPrecedence)
+                    break;
+
+                var operatorToken = NextToken();
+                var right = ParsePrimeExpression();
+                left = new BinaryExpressionSyntax(left, right, operatorToken);
+            }
+            return left;
         }
 
-        public ExpressionSyntax ParseTerm()
+        private static int GetBinaryOperatorPrecedence(SyntaxType type)
         {
-            var l_prime = ParseFactor();
-
-            while (Current.Type == SyntaxType.AdditionToken ||
-                    Current.Type == SyntaxType.SubstractToken)
+            switch(type)
             {
-                var operatorToken = NextToken();
-                var r_prime = ParseFactor();
+                case SyntaxType.AdditionToken:
+                case SyntaxType.SubstractToken:
+                    return 1;
+                case SyntaxType.MultiplyToken:
+                case SyntaxType.DivisionToken:
+                    return 2;
 
-                l_prime = new BinaryExpressionSyntax(l_prime, r_prime, operatorToken);
+                default:
+                    return 0;
             }
-
-            return l_prime;
-        }
-
-        public ExpressionSyntax ParseFactor()
-        {
-            var l_prime = ParsePrimeExpression();
-
-            while (Current.Type == SyntaxType.MultiplyToken ||
-                    Current.Type == SyntaxType.DivisionToken)
-            {
-                var operatorToken = NextToken();
-                var r_prime = ParsePrimeExpression();
-
-                l_prime = new BinaryExpressionSyntax(l_prime, r_prime, operatorToken);
-            }
-
-            return l_prime;
         }
 
         private ExpressionSyntax ParsePrimeExpression()
