@@ -3,6 +3,10 @@
     //  Initialization types
     enum SyntaxType
     {
+        //Tokens
+        BadToken,
+        EndofLineToken,
+
         NumberToken,
         SpaceToken,
         AdditionToken,
@@ -11,10 +15,10 @@
         SubstractToken,
         OpenParenToken,
         CloseParenToken,
-        BadToken,
-        EndofLineToken,
+
+        //Expressions
+        ParenthesizedExpression,
         NumberExpression,
-        BinaryExpression,
-        ParenthesizedExpression
+        BinaryExpression
     }
 }
