@@ -80,7 +80,7 @@ namespace A2.CodeAnalysis
 
             while (true)
             {
-                var precedence = GetBinaryOperatorPrecedence(Current.Type);
+                var precedence = Current.Type.GetBinaryOperatorPrecedence();
                 if (precedence == 0 || precedence <= parentPrecedence)
                     break;
 
@@ -89,22 +89,6 @@ namespace A2.CodeAnalysis
                 left = new BinaryExpressionSyntax(left, right, operatorToken);
             }
             return left;
-        }
-
-        private static int GetBinaryOperatorPrecedence(SyntaxType type)
-        {
-            switch(type)
-            {
-                case SyntaxType.AdditionToken:
-                case SyntaxType.SubstractToken:
-                    return 1;
-                case SyntaxType.MultiplyToken:
-                case SyntaxType.DivisionToken:
-                    return 2;
-
-                default:
-                    return 0;
-            }
         }
 
         private ExpressionSyntax ParsePrimeExpression()
