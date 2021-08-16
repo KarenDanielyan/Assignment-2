@@ -85,7 +85,7 @@ namespace A2.CodeAnalysis
                     break;
 
                 var operatorToken = NextToken();
-                var right = ParsePrimeExpression();
+                var right = ParseExpression(precedence);
                 left = new BinaryExpressionSyntax(left, right, operatorToken);
             }
             return left;
