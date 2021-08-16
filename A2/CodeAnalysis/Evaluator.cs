@@ -22,6 +22,24 @@ namespace A2.CodeAnalysis
             {
                 return (int) n.NumberToken.Value;
             }
+
+            if (node is UnaryExpressionSyntax u)
+            {
+                var operand = EvaluateExpression(u.Operand);
+
+                if (u.OperatorToken.Type == SyntaxType.SubstractToken)
+                {
+                    return -operand;
+                }
+                else if (u.OperatorToken.Type == SyntaxType.AdditionToken)
+                {
+                    return operand;
+                }
+                else
+                    throw new Exception($"Unrecognized unary operator `{u.OperatorToken.Type}`.");
+
+            }
+
             if (node is BinaryExpressionSyntax b)
             {
                 var left = EvaluateExpression(b.LeftToken);
