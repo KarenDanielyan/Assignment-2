@@ -76,7 +76,18 @@ namespace A2.CodeAnalysis
 
         private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
         {
-            var left = ParsePrimeExpression();
+            ExpressionSyntax left;
+            var unaryOperatorPrecedence = Current.Type.GetUnaryOperatorPrecedence();
+
+            if (unaryOperatorPrecedence != 0 && unaryOperatorPrecedence >= parentPrecedence)
+            {
+                var operatorToken = NextToken();
+                var operand = ParsePrimeExpression();
+
+                left = new UnaryExpressionSyntax(operand, operatorToken);
+            }
+            else
+                left = ParsePrimeExpression();
 
             while (true)
             {
