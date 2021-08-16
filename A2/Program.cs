@@ -42,7 +42,7 @@ namespace A2
                 {
                     string help = 
 @"This is a basic conosle calculator.
- Allowed operators are `*`, `/`, `+`, `-`, `(` and `)`.
+ Allowed operators are `*`, `/`, `+`, `-`, '^', `(` and `)`.
  Allowed number are numbers within int32.
  Whatever expression defined within conditions above are acceptable,
  so be inventive in your expressions.";
@@ -65,13 +65,13 @@ namespace A2
                 if (printTree)
                 {
                     //Styling
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     TreePrint(syntaxTree.Root);
                     Console.ResetColor();
                 }
                 if(syntaxTree.ErrorMessages.Any())
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     foreach (var message in syntaxTree.ErrorMessages)
                         Console.WriteLine(message);
                     Console.ResetColor();
