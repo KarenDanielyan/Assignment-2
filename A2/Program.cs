@@ -10,7 +10,9 @@ namespace A2
 
         static void Main(string[] args)
         {
+            Console.Title = "Calculator";
             bool printTree = default;
+            bool printHelp = default;
             try
             {
                 CheckArguments(args);
@@ -27,6 +29,8 @@ namespace A2
                     case "-t":
                         printTree = true;
                         break;
+                    case "-h":
+                        break;
                     default:
                         throw new Exception($"Unknown argument '{arg}'.");
                 }   
@@ -34,12 +38,27 @@ namespace A2
            
             while(true)
             {
+                if(args.Contains<string>("-h") && !printHelp)
+                {
+                    string help = 
+@"This is a basic conosle calculator.
+ Allowed operators are `*`, `/`, `+`, `-`, `(` and `)`.
+ Allowed number are numbers within int32.
+ Whatever expression defined within conditions above are acceptable,
+ so be inventive in your expressions.";
+                    Console.WriteLine(help);
+                    printHelp = true;
+                }
                 Console.Write("> ");
                 var line = Console.ReadLine();
                 if (String.IsNullOrWhiteSpace(line))
                     return;
-                else if (line == "#end")
-                    break;
+                else if (line == "#clear")
+                {
+                    Console.Clear();
+                    Console.Write("> ");
+                    line = Console.ReadLine();
+                }
 
                 var syntaxTree = SyntaxTree.Parse(line);
 
@@ -105,7 +124,7 @@ namespace A2
 
 //      INITIALIZATION ITEMS
         static List<String> arg = new List<String>
-        {"-v", "-t" };
+        {"-h", "-t" };
         static Exception tooManyArguments = new Exception($"Too many arguments!!!(Max: {arg.Count()})");
     }
 }

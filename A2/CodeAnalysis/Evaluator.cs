@@ -47,19 +47,19 @@ namespace A2.CodeAnalysis
 
                 if (b.OperatorToken.Type == SyntaxType.AdditionToken)
                 {
-                    return left + right;
+                    return Sum(left, right);
                 }
                 else if (b.OperatorToken.Type == SyntaxType.SubstractToken)
                 {
-                    return left - right;
+                    return Substract(left,right);
                 }
                 else if (b.OperatorToken.Type == SyntaxType.MultiplyToken)
                 {
-                    return left * right;
+                    return Multiply(left,right);
                 }
                 else if (b.OperatorToken.Type == SyntaxType.DivisionToken)
                 {
-                    return left / right;
+                    return Divide(left, right);
                 }
                 else
                     throw new Exception($"Unrecognized binary operetor {b.OperatorToken.Type}.");
@@ -72,5 +72,32 @@ namespace A2.CodeAnalysis
 
             throw new Exception($"Unrecognized node {node.Type}.");
         }
+        #region AriphmeticFunctions
+        private int Sum( int left, int right)
+        {
+            return left + right;
+        }
+        private int Substract( int left, int right)
+        {
+            return left - right;
+        }
+        private int Multiply( int left, int right)
+        {
+            return left * right;
+        }
+        private int Divide( int left, int right)
+        {
+            try
+            {
+                return left / right;
+            }
+            catch(DivideByZeroException)
+            {
+                Console.WriteLine("Attempted to divide by zero.");
+                return 0;
+            }
+        }
+        #endregion
     }
+
 }
