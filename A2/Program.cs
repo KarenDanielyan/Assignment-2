@@ -45,14 +45,23 @@ namespace A2
  Allowed operators are `*`, `/`, `+`, `-`, '^', `(` and `)`.
  Allowed number are numbers within int32.
  Whatever expression defined within conditions above are acceptable,
- so be inventive in your expressions.";
+ so be inventive in your expressions.
+Type `#clear` to clear prompt.
+Type `#exit` to finish application.";
                     Console.WriteLine(help);
                     printHelp = true;
                 }
                 Console.Write("> ");
                 var line = Console.ReadLine();
-                if (String.IsNullOrWhiteSpace(line))
-                    return;
+                while (String.IsNullOrWhiteSpace(line))
+                {
+                    Console.Write("> ");
+                    line = Console.ReadLine();
+                }
+                if (line == "#exit")
+                {
+                    break;
+                }
                 else if (line == "#clear")
                 {
                     Console.Clear();

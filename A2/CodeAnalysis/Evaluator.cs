@@ -103,21 +103,25 @@ namespace A2.CodeAnalysis
         }
         private int Power( int left, int right)
         {
+            if (left == 0)
+                return 0;
+
             if (right == 0)
             {
                 return 1;
             }
 
-            // for an even number, the last bit is zero
-            if ((right & 1) == 0)
+            if (right % 2 == 0)
             {
-                // shifting one bit to the right is equivalent to dividing by two
-                var p = Power(left, right >> 1);
+                var p = Power(left, right / 2);
                 return p * p;
             }
             else
             {
-                return left * Power(left, right - 1);
+                if( right < 0)
+                    return left * Power(1/left, right - 1);
+                else
+                    return left * Power(left, right - 1);
             }
         }
         #endregion
