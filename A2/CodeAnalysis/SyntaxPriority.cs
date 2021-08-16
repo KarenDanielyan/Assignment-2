@@ -8,7 +8,7 @@
             {
                 case SyntaxType.AdditionToken:
                 case SyntaxType.SubstractToken:
-                    return 3;
+                    return 4;
                 default:
                     return 0;
             }
@@ -24,6 +24,8 @@
                 case SyntaxType.MultiplyToken:
                 case SyntaxType.DivisionToken:
                     return 2;
+                case SyntaxType.PowerToken:
+                    return 3;
 
                 default:
                     return 0;

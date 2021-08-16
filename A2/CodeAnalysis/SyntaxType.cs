@@ -13,6 +13,7 @@
         DivisionToken,
         MultiplyToken,
         SubstractToken,
+        PowerToken,
         OpenParenToken,
         CloseParenToken,
 

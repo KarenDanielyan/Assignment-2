@@ -61,6 +61,10 @@ namespace A2.CodeAnalysis
                 {
                     return Divide(left, right);
                 }
+                else if (b.OperatorToken.Type == SyntaxType.PowerToken)
+                {
+                    return Power(left, right);
+                }
                 else
                     throw new Exception($"Unrecognized binary operetor {b.OperatorToken.Type}.");
             }
@@ -95,6 +99,25 @@ namespace A2.CodeAnalysis
             {
                 Console.WriteLine("Attempted to divide by zero.");
                 return 0;
+            }
+        }
+        private int Power( int left, int right)
+        {
+            if (right == 0)
+            {
+                return 1;
+            }
+
+            // for an even number, the last bit is zero
+            if ((right & 1) == 0)
+            {
+                // shifting one bit to the right is equivalent to dividing by two
+                var p = Power(left, right >> 1);
+                return p * p;
+            }
+            else
+            {
+                return left * Power(left, right - 1);
             }
         }
         #endregion

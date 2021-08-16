@@ -87,6 +87,10 @@ namespace A2.CodeAnalysis
             {
                 return new SyntaxToken(SyntaxType.DivisionToken, _location++, "/", null);
             }
+            else if (Current == '^')
+            {
+                return new SyntaxToken(SyntaxType.PowerToken, _location++, "^", null);
+            }
             else if (Current == '(')
             {
                 return new SyntaxToken(SyntaxType.OpenParenToken, _location++, "(", null);
