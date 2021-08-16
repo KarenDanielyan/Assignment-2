@@ -7,12 +7,10 @@
 
 * Basic REPL (read-eval-print loop) for an expression evaluator
 * Added lexer, a parser, and an evaluator
-* Handle `+`, `-`, `*`, `/`, and parenthesized expressions
+* Handle `+`, `-`, `*`, `/`, `^` and parenthesized expressions
 * Print syntax trees
-
-### Items that are work in progress
-
 * Handling unary expressions `-1`, `-(1+2)` etc.
+
 
 ## Interesting aspects
 
