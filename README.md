@@ -11,6 +11,10 @@
 * Print syntax trees
 * Handling unary expressions `-1`, `-(1+2)` etc.
 
+## TO-DO list
+
+* Assiosiativity relativirty towards operators
+
 
 ## Interesting aspects
 
