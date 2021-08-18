@@ -92,8 +92,8 @@ namespace A2.CodeAnalysis
             while (true)
             {
                 var precedence = Current.Type.GetBinaryOperatorPrecedence();
-                if (precedence == 0 || precedence < parentPrecedence)
-                    break;
+                if (precedence == 0 || precedence <= parentPrecedence)
+                        break;
 
                 var operatorToken = NextToken();
                 var right = ParseExpression(precedence);
