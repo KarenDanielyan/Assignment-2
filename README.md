@@ -10,6 +10,7 @@
 * Handle `+`, `-`, `*`, `/`, `^` and parenthesized expressions
 * Print syntax trees
 * Handling unary expressions `-1`, `-(1+2)` etc.
+* Micro fix of assiociativity issues.
 
 ## TO-DO list
 
