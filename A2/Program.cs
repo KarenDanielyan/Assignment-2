@@ -46,8 +46,6 @@ Allowed operators are `*`, `/`, `+`, `-`, '^', `(` and `)`.
 Allowed number are numbers within int32.
 Whatever expression defined within conditions above are acceptable,
 so be inventive in your expressions.
-Assiosiativity is left-right so if you type 2^3^3 answer will be 512 instead of 134,217,728.
-This is a architecture issue and will be resolved soon.
 Type `#clear` to clear prompt.
 Type `#exit` to finish application.";
                     Console.WriteLine(help);
