@@ -1,5 +1,5 @@
-# Assignment - 2: Calculatior
-### Assignment was about creating a console application that will execute basic ariphmetic operations.
+# Recursive Descent Parser: Calculatior
+### Executes basic ariphmetic operations.
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
